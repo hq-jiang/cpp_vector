@@ -4,6 +4,7 @@
 class Vector{
 
     int sz;
+    int space;
     int* elem;
 
   public:
@@ -18,9 +19,14 @@ class Vector{
     int operator[](const int i) const;
 
     const int size() const;
+    const int capacity() const;
 
     int get(int i);
     void set(int i, int v);
+
+    void reserve(const int i);
+    void resize(const int i);
+    void push_back(int v);
 
 };
 
