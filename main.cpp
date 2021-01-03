@@ -10,7 +10,9 @@ void print_array(ostream& os, int* a, int sz){
   os << endl;
 }
 */
-void print_vector(ostream& os, Vector* v){
+
+template<typename T>
+void print_vector(ostream& os, Vector<T>* v){
   if (v->size()>0){
     for(int i=0; i<v->size(); ++i){
 
@@ -29,14 +31,14 @@ int main()
 {
   // Default constructor
   printf("Vector via default constructor: ");
-  Vector v_default; // Question: Do we have to use delete if p is nullptr?
+  Vector<int> v_default; // Question: Do we have to use delete if p is nullptr?
   printf("successful\n");
   print_vector(cout, &v_default);
 
 
   // Constructor with size
   printf("Vector via size constructor: ");
-  Vector v_sized(4);
+  Vector<int> v_sized(4);
   printf("successful\n");
   print_vector(cout, &v_sized);
 
@@ -53,28 +55,28 @@ int main()
 
   // Initialize with initializer list
   printf("Vector via initializer list: ");
-  Vector v_init{1,2,3,4,5};
+  Vector<int> v_init{1,2,3,4,5};
   print_vector(cout, &v_init);
   printf("successful\n");
 
   // Assign vector with an other vector;
   printf("Vector via other vector: ");
-  Vector v_vector(v_init);
+  Vector<int> v_vector(v_init);
   print_vector(cout, &v_vector);
   printf("successful\n");
 
 
   // Use = operator for vector
   printf("Use = operator: \n");
-  Vector v_equals{1,2,3};
+  Vector<int> v_equals{1,2,3};
   v_equals = v_init;
   print_vector(cout, &v_equals);
   printf("successful\n");
 
 
   // Use [] operator for access
-  Vector v_brck_op = v_init;
-  const Vector v_const = v_init;
+  Vector<int> v_brck_op = v_init;
+  const Vector<int> v_const = v_init;
   printf("Use [] operator: \n");
   for(int i=0; i<v_brck_op.size(); ++i){
     printf("%d ", v_brck_op[i]);
@@ -91,7 +93,7 @@ int main()
 
 
   printf("Resize: \n");
-  Vector v_resize = v_vector;
+  Vector<int> v_resize = v_vector;
   printf("size %d \n", v_resize.size());
   printf("space %d \n", v_resize.capacity());
   v_resize.resize(10);
@@ -104,7 +106,7 @@ int main()
   printf("new space %d \n", v_resize.capacity());
 
   printf("Push back: \n");
-  Vector v_push;
+  Vector<int> v_push;
   for(int i=0; i<5;++i){
     v_push.push_back(i);
   }

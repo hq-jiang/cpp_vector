@@ -2,18 +2,21 @@
 #include "vector.h"
 #include <stdexcept>
 
-Vector::Vector(){
+template <typename T>
+Vector<T>::Vector(){
   sz = 0;
   space=0;
   elem = nullptr;//new int[0];
 }
 
-Vector::~Vector(){
+template <typename T>
+Vector<T>::~Vector(){
   delete[] elem;
   std::cout << "Free allocated memory" << std::endl;
 }
 
-Vector::Vector(int s){
+template <typename T>
+Vector<T>::Vector(int s){
   sz = s;
   space=s;
   elem = new int[space];
@@ -22,7 +25,8 @@ Vector::Vector(int s){
   }
 }
 
-Vector::Vector(std::initializer_list<int> lst){
+template <typename T>
+Vector<T>::Vector(std::initializer_list<T> lst){
   int lst_len = lst.size();
   sz = lst_len;
   space = lst_len;
@@ -34,7 +38,8 @@ Vector::Vector(std::initializer_list<int> lst){
   }
 }
 
-Vector::Vector(const Vector& v){
+template <typename T>
+Vector<T>::Vector(const Vector& v){
   sz = v.sz;
   space = v.space;
   elem = new int[space];
@@ -43,7 +48,8 @@ Vector::Vector(const Vector& v){
   }
 }
 
-Vector& Vector::operator=(const Vector& v){
+template <typename T>
+Vector<T>& Vector<T>::operator=(const Vector<T>& v){
   sz = v.sz;
   space = v.space;
   delete[] elem;
@@ -53,24 +59,29 @@ Vector& Vector::operator=(const Vector& v){
   }
 }
 
-int& Vector::operator[](const int i){
+template <typename T>
+int& Vector<T>::operator[](const int i){
   return elem[i];
 }
 
-int Vector::operator[](const int i) const{
+template <typename T>
+int Vector<T>::operator[](const int i) const{
   return elem[i];
 }
 
 
-const int Vector::size() const{
+template <typename T>
+const int Vector<T>::size() const{
   return sz;
 }
 
-const int Vector::capacity() const{
+template <typename T>
+const int Vector<T>::capacity() const{
   return space;
 }
 
-int Vector::get(int i){
+template <typename T>
+int Vector<T>::get(int i){
   if (i<sz){
     return elem[i];
   }
@@ -79,7 +90,8 @@ int Vector::get(int i){
   }
 }
 
-void Vector::set(int i, int v){
+template <typename T>
+void Vector<T>::set(int i, int v){
   if (i<sz){
     elem[i] = v;
   }
@@ -89,7 +101,8 @@ void Vector::set(int i, int v){
 
 }
 
-void Vector::reserve(const int i){
+template <typename T>
+void Vector<T>::reserve(const int i){
   if (i<=space) return;
 
   int* p = new int[i];
@@ -101,8 +114,8 @@ void Vector::reserve(const int i){
   space = i;
 }
 
-
-void Vector::resize(const int i){
+template <typename T>
+void Vector<T>::resize(const int i){
   reserve(i);
   for (int j=sz; j<i; ++j){
     elem[j] = 0;
@@ -110,7 +123,8 @@ void Vector::resize(const int i){
   sz = i;
 }
 
-void Vector::push_back(int v){
+template <typename T>
+void Vector<T>::push_back(int v){
   if (space==0){
     reserve(4);
   }

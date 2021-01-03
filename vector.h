@@ -3,6 +3,7 @@
 
 #include <initializer_list>
 
+template <typename T>
 class Vector{
 
   public:
@@ -10,7 +11,7 @@ class Vector{
     Vector();
     ~Vector();
     Vector(int s); // Initialize vector with size
-    Vector(std::initializer_list<int> lst); // Initialize with initializer list
+    Vector(std::initializer_list<T> lst); // Initialize with initializer list
     Vector(const Vector& v); // Initialize Vector with existing vector
     Vector& operator=(const Vector& v); //  Pass vector assignment
     int& operator[](const int i);

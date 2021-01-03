@@ -3,14 +3,14 @@
 #include <gtest/gtest.h>
 
 TEST(CppVector, DefaultConstructor) {
-  Vector vector;
+  Vector<int> vector;
   ASSERT_EQ(vector.size(), 0);
   ASSERT_EQ(vector.capacity(), 0);
   ASSERT_THROW(vector.get(0), std::invalid_argument);
 }
 
 TEST(CppVector, SizedConstructor) {
-  Vector vector(4);
+  Vector<int> vector(4);
   ASSERT_EQ(vector.size(), 4);
   ASSERT_EQ(vector.capacity(), 4);
   for(int i=0; i<vector.size(); ++i) {
