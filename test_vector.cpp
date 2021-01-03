@@ -2,8 +2,11 @@
 
 #include <gtest/gtest.h>
 
-TEST(SimpleTest, test) {
-  ASSERT_EQ(6, 6);
+TEST(CppVector, DefaultConstructor) {
+  Vector vector;
+  ASSERT_EQ(vector.size(), 0);
+  ASSERT_EQ(vector.capacity(), 0);
+  ASSERT_THROW(vector.get(0), std::invalid_argument);
 }
 
 int main(int argc, char **argv) {
