@@ -1,6 +1,8 @@
 #ifndef VECTOR
 #define VECTOR
 
+#include <initializer_list>
+
 class Vector{
 
     int sz;
@@ -29,6 +31,8 @@ class Vector{
     void push_back(int v);
 
 };
+
+#include "vector.inl"
 
 #endif // VECTOR
 
