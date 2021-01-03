@@ -5,10 +5,6 @@
 
 class Vector{
 
-    int sz;
-    int space;
-    int* elem;
-
   public:
 
     Vector();
@@ -29,6 +25,11 @@ class Vector{
     void reserve(const int i);
     void resize(const int i);
     void push_back(int v);
+
+  protected:
+    int sz;
+    int space;
+    int* elem;
 
 };
 
